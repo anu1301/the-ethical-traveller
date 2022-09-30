@@ -4,6 +4,15 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-12 mt-3">
+            <div class="w-75 mx-auto mt-2 text-center">
+                <h3>
+                    The Ethical Traveller provides inspirational, honest blogs about places and people involved in volunteering and conservation projects. 
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
 
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
@@ -13,8 +22,12 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {{ post.featured_image }}
+                                {% if "placeholder" in post.featured_image.url %}
+                                <img class="card-img-top"
+                                    src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg">
+                                {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>

@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 """
 Class based views used to enable reuseable code,
@@ -110,3 +110,10 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+
+class AddPost(View):
+    model = Post
+    form_class = PostForm
+    template_name = 'add-post.html'
