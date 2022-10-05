@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm, PostForm
+from .forms import CommentForm
 
 """
 Class based views used to enable reuseable code,
@@ -42,7 +42,7 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog.html'
-    paginate_by = 3
+    paginate_by = 6
 
 
 class PostDetail(View):
@@ -112,8 +112,7 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-
-class AddPost(View):
+class AddPost(CreateView):
     model = Post
-    form_class = PostForm
     template_name = 'add-post.html'
+    fields = '__all__'

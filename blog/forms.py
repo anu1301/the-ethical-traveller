@@ -9,25 +9,50 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-class PostForm(forms.ModelForm):
+# class PostForm(forms.ModelForm):
 
-    class Meta:
-        model = Post
-        fields = (
-            'title',
-            'featured_image',
-            'excerpt',
-            'content',
-        )
-    
-    title = (
-        forms.CharField(
-            widget=forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Please add your blog title here'
-                }
-            )
-        )
-    )
-    featured_image = CloudinaryFileField()
+#     title = (
+#         forms.CharField(
+#             widget=forms.TextInput(
+#                 attrs={
+#                     'class': 'form-control',
+#                     'placeholder': 'Please add your blog title here'
+#                 }
+#             )
+#         )
+#     )
+
+#     author = forms.CharField(
+#         max_length=60,
+#         widget=forms.Textarea(
+#             attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'Enter your name here' 
+#             }
+#         )
+#     )
+
+#     featured_image = CloudinaryFileField()
+
+#     excerpt = (
+#         forms.CharField(
+#             max_length=200,
+#             widget=forms.TextInput(
+#                 attrs={
+#                     'class': 'form-control',
+#                     'placeholder': 'Add a Short discription here'
+#                 }
+#             )
+#         )
+#     )
+
+#     content = (
+#         forms.CharField(
+#             widget=forms.Textarea(
+#                 attrs={
+#                     'class': 'form-control',
+#                     'placeholder': 'Add blog content here'
+#                 }
+#             )
+#         )
+#     )
