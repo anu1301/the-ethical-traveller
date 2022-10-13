@@ -5,20 +5,19 @@
 
 {% block head_title %}{% trans "Add Your Post" %}{% endblock %}
 {% block content %}
-<!-- {% if user.is_authenticated %} -->
+{% if user.is_authenticated %}
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h3>{% trans "Add Your Post" %}</h3>
-  
-            <p>{% blocktrans %}Welcome back to the The Ethical Traveller blog. Do you already have an account? Then please <a
-                    class="link" href="{{ login_url }}">sign in</a> instead.{% endblocktrans %}</p>
         </div>
     </div>
+    <br/><br/>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <form class="signup" id="signup_form" method="post" action="{% url 'add_post' %}">
+            <div class="input-group mb-3">
+            <form class="signup" id="signup_form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 {% if redirect_field_value %}
@@ -26,6 +25,7 @@
                 {% endif %}
                 <button class="btn btn-signup right" type="submit">{% trans "Submit Your Post" %} &raquo;</button>
             </form>
+        </div>
         </div>
     </div>
   </div>
