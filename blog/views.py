@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm, PostForm
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
 
 """
 Class based views used to enable reuseable code,
@@ -24,19 +24,6 @@ class HomePage(TemplateView):
                 "home_active": "user-red",
             }
         )
-
-
-# class BlogPage(TemplateView):
-#     template_name = "blog.html"
-
-#     def get(self, request, *args, **kwargs):
-#         return render(
-#             request,
-#             "blog.html",
-#             {
-#                 "blog_active": "user-red",
-#             }
-#         )
 
 
 class PostList(generic.ListView):
@@ -123,6 +110,12 @@ class AddPost(CreateView):
         form.instance.author = self.request.user
         form.instance.slug = form.cleaned_data.get('title')
         return super(AddPost, self).form_valid(form)
-        # if form.is_valid():
-            # form.save()
-        # return redirect('blog')
+
+
+class UpdatePost(UpdateView):
+    model = Post
+    template_name = 'update-post.html'
+    fields = ['title', 'featured_image', 'excerpt', 'content', 'status']
+    success_url = '/blog/blog'
+
+

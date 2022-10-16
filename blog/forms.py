@@ -18,12 +18,7 @@ class PostForm(forms.ModelForm):
             )
 
         widgets = {
-            # 'title': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'slug': forms.SlugField(attrs={'class': 'form-control'}),
             'author': forms.Select(attrs={'class': 'form-control'}),
-            # 'featured_image': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'content': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }
 
@@ -37,16 +32,6 @@ class PostForm(forms.ModelForm):
             )
         )
     )
-
-    # slug = forms.SlugField(
-    #                 max_length=70,
-    #                 label="Slug",
-    #                 widget=forms.TextInput(
-    #                     attrs={
-    #                         "class": "form-control"
-    #                     }
-    #                 )
-    #             )
 
     featured_image = CloudinaryFileField()
 

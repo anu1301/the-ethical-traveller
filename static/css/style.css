@@ -25,6 +25,8 @@ body {
 .card {
     border: none;
     background-color: transparent;
+    width: 70%;
+    margin: auto;
 }
 
 .image-container {
