@@ -10,4 +10,6 @@ urlpatterns = [
          views.PostDetail.as_view(), name='post_detail'),
     path('blog_detail/edit/<slug:slug>/',
          views.UpdatePost.as_view(), name='update_post'),
+    path('blog_detail/<slug:slug>/delete/',
+         views.DeletePost.as_view(), name='delete_post'),
 ]

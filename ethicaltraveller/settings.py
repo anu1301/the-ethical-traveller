@@ -102,6 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ethicaltraveller.wsgi.application'
 
+TEMPLATE_CONTEXT_PROCESSORS = 'django.core.context_processors.request'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import TemplateView, CreateView, UpdateView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, EditPost
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 # from django.contrib.auth import get_user_model
 
 """
@@ -100,11 +102,12 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class AddPost(CreateView):
+class AddPost(SuccessMessageMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add-post.html'
     success_url = '/blog/blog/'
+    success_message = "You have successfully added your post"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -112,10 +115,15 @@ class AddPost(CreateView):
         return super(AddPost, self).form_valid(form)
 
 
-class UpdatePost(UpdateView):
+class UpdatePost(SuccessMessageMixin, UpdateView):
     model = Post
+    form_class = EditPost
     template_name = 'update-post.html'
-    fields = ['title', 'featured_image', 'excerpt', 'content', 'status']
-    success_url = '/blog/blog'
+    success_url = '/blog/blog/'
+    success_message = "You have successfully updated your post"
 
 
+class DeletePost(DeleteView):
+    model = Post
+    template_name = 'delete-post.html'
+    success_url = '/blog/blog/'
