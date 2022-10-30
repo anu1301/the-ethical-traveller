@@ -5,8 +5,7 @@ from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm, PostForm, EditPost
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
-# from django.contrib.auth import get_user_model
+
 
 """
 Class based views used to enable reuseable code,

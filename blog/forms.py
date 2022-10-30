@@ -1,6 +1,7 @@
 from .models import Comment, Post
 from django import forms
 from cloudinary.forms import CloudinaryFileField
+from django_summernote.widgets import SummernoteWidget
 
 
 class CommentForm(forms.ModelForm):
@@ -14,11 +15,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = (
-            'title', 'author', 'featured_image', 'excerpt', 'content', 'status'
+            'title', 'featured_image', 'excerpt', 'content', 'status'
             )
 
         widgets = {
-            'author': forms.Select(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }
 
@@ -47,16 +47,7 @@ class PostForm(forms.ModelForm):
         )
     )
 
-    content = (
-        forms.CharField(
-            widget=forms.Textarea(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Add blog content here'
-                }
-            )
-        )
-    )
+    content = forms.CharField(widget=SummernoteWidget)
 
 
 class EditPost(forms.ModelForm):
@@ -65,3 +56,5 @@ class EditPost(forms.ModelForm):
         fields = (
             'title', 'featured_image', 'excerpt', 'content', 'status'
             )
+
+    content = forms.CharField(widget=SummernoteWidget)

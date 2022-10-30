@@ -9,6 +9,7 @@ STATUS = ((0, 'Draft'), (1, 'Published'))
 
 # blog post model
 class Post(models.Model):
+    # model fields
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -26,6 +27,7 @@ class Post(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
+    #renames the instances of the model with their title name
     def __str__(self):
         return self.title
 

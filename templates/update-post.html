@@ -6,29 +6,38 @@
 {% block head_title %}{% trans "Edit Your Post" %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-
+{% if user == post.author %}
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h3>{% trans "Edit Your Post" %}</h3>
         </div>
     </div>
-    <br/><br/>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <div class="input-group mb-3">
             <form class="signup" id="signup_form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_p|safe }}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
+                <br>
                 <button class="btn btn-signup right" type="submit">{% trans "Update Your Post" %} &raquo;</button>
+                <a class="btn btn-signup right" href="{{ request.META.HTTP_REFERER }}" role="button">&laquo; {% trans "Back" %} </a>
             </form>
         </div>
         </div>
     </div>
   </div>
-<br/><br/>
+  {% else %}
+  <strong>
+    <h1 class="w-75 mx-auto">You are not the author of this post. You are not permitted to update it!</h1>
+  </strong>
+  {% endif %}
+  {% else %}
+  <strong>
+    <h1 class="w-75 mx-auto">You will be required to register or login before you can edit posts!</h1>
+  </strong>
 {% endif %}
 {% endblock content %}

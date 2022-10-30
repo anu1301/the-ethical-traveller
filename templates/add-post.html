@@ -19,7 +19,7 @@
             <div class="input-group mb-3">
             <form class="signup" id="signup_form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_p | safe }}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
@@ -30,6 +30,10 @@
     </div>
   </div>
 <br/><br/>
+{% else %}
+<strong>
+    <h1 class="w-75 mx-auto">You will be required to register or login before you can add a post!</h1>
+  </strong>
 {% endif %}
 <script>
     setTimeout(function () {
