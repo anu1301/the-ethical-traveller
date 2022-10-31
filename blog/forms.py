@@ -37,7 +37,7 @@ class PostForm(forms.ModelForm):
 
     excerpt = (
         forms.CharField(
-            max_length=200,
+            max_length=150,
             widget=forms.Textarea(
                 attrs={
                     'class': 'form-control',
@@ -47,7 +47,13 @@ class PostForm(forms.ModelForm):
         )
     )
 
-    content = forms.CharField(widget=SummernoteWidget)
+    content = forms.CharField(
+        widget=SummernoteWidget(
+            attrs={
+                'summernote': {'width': '100%'}
+            }
+        )
+    )
 
 
 class EditPost(forms.ModelForm):
@@ -57,4 +63,10 @@ class EditPost(forms.ModelForm):
             'title', 'featured_image', 'excerpt', 'content', 'status'
             )
 
-    content = forms.CharField(widget=SummernoteWidget)
+    content = forms.CharField(
+        widget=SummernoteWidget(
+            attrs={
+                'summernote': {'width': '100%'}
+                }
+            )
+        )

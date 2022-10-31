@@ -16,8 +16,8 @@
     <br/><br/>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <div class="input-group mb-3">
-            <form class="signup" id="signup_form" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+            <form class="form-group col-lg-8" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p | safe }}
                 {% if redirect_field_value %}
@@ -27,7 +27,7 @@
             </form>
         </div>
         </div>
-    </div>
+    <!-- </div> -->
   </div>
 <br/><br/>
 {% else %}

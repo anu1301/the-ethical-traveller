@@ -27,7 +27,7 @@ class Post(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
-    #renames the instances of the model with their title name
+    # renames the instances of the model with their title name
     def __str__(self):
         return self.title
 
