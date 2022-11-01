@@ -11,7 +11,7 @@ body {
 }
 
 .light-bg {
-    background-color:  #3c453c;
+    background-color: #3c453c;
 }
 
 .dark-bg {
@@ -22,6 +22,7 @@ body {
     background-color: #F9FAFC;
 }
 
+/* Posts */
 .card {
     border: none;
     background-color: transparent;
@@ -84,7 +85,7 @@ body {
 
 .post-link {
     text-decoration: none;
-    color:  #3c453c;
+    color: #3c453c;
 }
 
 .post-link:hover,
@@ -102,14 +103,12 @@ body {
     color: lightgray;
 }
 
-
-
+/* Buttons */
 .btn-signup {
     background-color: #186641;
     color: #fff;
 
 }
-
 
 .btn-signup:hover,
 .btn-signup:active {

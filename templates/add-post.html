@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-
+<!-- allows translation tags -->
 {% load i18n %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Add Your Post" %}{% endblock %}
 {% block content %}
+<!-- only allows registered users to add posts -->
 {% if user.is_authenticated %}
 
 <div class="container">
@@ -13,33 +14,25 @@
             <h3>{% trans "Add Your Post" %}</h3>
         </div>
     </div>
-    <br/><br/>
+    <br /><br />
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <div class="card-body">
-            <form class="form-group col-lg-8" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p | safe }}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">{% trans "Submit Your Post" %} &raquo;</button>
-            </form>
+                <form class="form-group col-lg-8" method="post" enctype="multipart/form-data">
+                    <!-- Secret, user-specific token to prevent Cross-Site Request Forgeries -->
+                    {% csrf_token %}
+                    {{ form.as_p | safe }}
+                    <button class="btn btn-signup right" type="submit">{% trans "Submit Your Post" %} &raquo;</button>
+                </form>
+            </div>
         </div>
-        </div>
-    <!-- </div> -->
-  </div>
-<br/><br/>
+    </div>
+</div>
+<br /><br />
+<!-- Prevents user from copying url and adding a post whilst logged out -->
 {% else %}
 <strong>
     <h1 class="w-75 mx-auto">You will be required to register or login before you can add a post!</h1>
-  </strong>
+</strong>
 {% endif %}
-<script>
-    setTimeout(function () {
-         let comments = document.getElementById("cmt");
-         let alert = new bootstrap.Alert(comments);
-         alert.close();
-     }, 3000);
- </script>
 {% endblock content %}

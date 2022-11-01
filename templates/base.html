@@ -27,19 +27,24 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><img src="https://res.cloudinary.com/anu1301/image/upload/c_thumb,w_200,g_face/v1664533488/eithical_traveller_logo_av5grm.jpg" alt="tet_logo" width="100" height="100"></span></a>
+            <!-- Brand Logo responsive and returns user to home page -->
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><img
+                        src="https://res.cloudinary.com/anu1301/image/upload/c_thumb,w_200,g_face/v1664533488/eithical_traveller_logo_av5grm.jpg"
+                        alt="tet_logo" width="100" height="100"></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Navbar collapses for smaller devices -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {{ home_active }}" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link {{ blog_active }}" href="{% url 'blog' %}">Blog</a>
+                        <a class="nav-link {{ blog_active }}" href="{% url 'blog' %}">Blog</a>
                     </li>
+                    <!-- The 'Add blog' and 'Logout' only appear if the user has logged-in -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_post' %}">Add Blog</a>
@@ -77,17 +82,32 @@
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
-        <!-- Content Goes here -->
+        <!-- Content here -->
         {% endblock content %}
     </main>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-white">The Ethical Traveller</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
+        <p class="m-0 text-center text-white">Follow us:
+            <!-- Responsive social networks -->
+            <a class="text-white" href="https://facebook.com" target="_blank" rel="noopener"
+                aria-label="Visit our Facebook page (opens in a new tab">
+                <i class="fab fa-facebook-square ms-3"></i>
+            </a>
+            <a class="text-white " href="https://twitter.com" target="_blank" rel="noopener"
+                aria-label="Visit our Twitter page (opens in a new tab">
+                <i class="fab fa-twitter-square ms-3"></i>
+            </a>
+            <a class="text-white" href="https://instagram.com" target="_blank" rel="noopener"
+                aria-label="Visit our Instagram page (opens in a new tab">
+                <i class="fab fa-instagram-square ms-3"></i>
+            </a>
+            <a class="text-white" href="https://youtube.com" target="_blank" rel="noopener"
+                aria-label="Visit our YouTube page (opens in a new tab">
+                <i class="fab fa-youtube-square ms-3"></i>
+            </a>
+        </p>
     </footer>
     <!-- JavaScript to make alerts dismiss themselves -->
     <script>

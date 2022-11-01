@@ -29,11 +29,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: do not run with debug turned on in production!
 DEBUG = True
 
+# Cross-Origin Resource Sharing - supports third party resources loading
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
+# Permits the site to be hosted by Heroku
 ALLOWED_HOSTS = ['the-ethical-traveller.herokuapp.com', 'localhost']
 
 
@@ -57,11 +59,14 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+# The default site for the project
 SITE_ID = 1
 
+# Redirects the user to the homepage after login/logout
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# Standard Bootstraps message tags
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -70,6 +75,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger'
 }
 
+# Used to format post comments
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -102,21 +108,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ethicaltraveller.wsgi.application'
 
-TEMPLATE_CONTEXT_PROCESSORS = 'django.core.context_processors.request'
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation

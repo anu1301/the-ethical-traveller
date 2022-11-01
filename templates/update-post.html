@@ -7,7 +7,7 @@
 {% block content %}
 <!-- only allows registered users to update posts -->
 {% if user.is_authenticated %}
-<!-- only allows the author of the posts to update posts -->
+<!-- only allows the author of the posts to update their own posts -->
 {% if user == post.author %}
 <div class="container-fluid">
   <div class="row">
@@ -19,13 +19,12 @@
     <div class="col-md-8 mt-3 offset-md-2">
       <div class="input-group mb-3">
         <form class="signup" id="signup_form" method="post" enctype="multipart/form-data">
+          <!-- Secret, user-specific token to prevent Cross-Site Request Forgeries -->
           {% csrf_token %}
-          {{ form.as_p|safe }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
+          {{ form.as_p | safe }}
           <br>
           <button class="btn btn-signup right" type="submit">{% trans "Update Your Post" %} &raquo;</button>
+          <!-- The "back" button takes you back to previous page -->
           <a class="btn btn-signup right" href="{{ request.META.HTTP_REFERER }}" role="button">&laquo;
             {% trans "Back" %} </a>
         </form>
@@ -34,11 +33,13 @@
   </div>
 </div>
 {% else %}
+<!-- This message appears if a user tries to update a post not written by them  -->
 <strong>
   <h1 class="w-75 mx-auto">You are not the author of this post. You are not permitted to update it!</h1>
 </strong>
 {% endif %}
 {% else %}
+<!-- This message appears if a user tries to write a post and are not registered or logged in  -->
 <strong>
   <h1 class="w-75 mx-auto">You will be required to register or login before you can edit posts!</h1>
 </strong>
