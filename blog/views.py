@@ -1,3 +1,4 @@
+# Imports
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
@@ -14,6 +15,7 @@ The use of django built-in features have been used.
 """
 
 
+# Home page view
 class HomePage(TemplateView):
     template_name = "index.html"
 
@@ -28,6 +30,11 @@ class HomePage(TemplateView):
 
 
 class PostList(generic.ListView):
+    """
+    Displays blog posts 6 to a page. 
+    'If paginated statement' in blog template, 
+    which provides forward and back links.
+    """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog.html'
@@ -35,8 +42,15 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
-
+    """
+    Displays detailed page view of individual blog post.
+    """
     def get(self, request, slug, *args, **kwargs):
+        """
+        Retrieves and displays blog post details.
+        The 'if statement' takes into account if the user has already
+        liked the post or not.
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("created_on")
@@ -57,7 +71,9 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-
+        """
+        Allows authenticated users to comment on posts.
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -89,6 +105,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
+    """
+    View to like/unlike blog post.
+    """
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -102,6 +121,10 @@ class PostLike(View):
 
 
 class AddPost(SuccessMessageMixin, CreateView):
+    """
+    Displays Add Post page (PostForm).
+    Returns to the blog page listing view after addition of post.
+    """
     model = Post
     form_class = PostForm
     template_name = 'add-post.html'
@@ -115,6 +138,10 @@ class AddPost(SuccessMessageMixin, CreateView):
 
 
 class UpdatePost(SuccessMessageMixin, UpdateView):
+    """
+    Displays Update Post page (EditPost form).
+    Returns to the blog page listing view after update.
+    """
     model = Post
     form_class = EditPost
     template_name = 'update-post.html'
@@ -123,6 +150,10 @@ class UpdatePost(SuccessMessageMixin, UpdateView):
 
 
 class DeletePost(DeleteView):
+    """
+    Displays Delete Post page. 
+    Returns to the blog page listing view after deletion.
+    """
     model = Post
     template_name = 'delete-post.html'
     success_url = '/blog/blog/'

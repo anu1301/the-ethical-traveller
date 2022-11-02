@@ -1,15 +1,16 @@
-from django.db import models
+from django.db import models 
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 from django.utils.text import slugify
 
+# Global variable
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
 # blog post model
 class Post(models.Model):
-    # model fields
+    """ model fields """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -27,22 +28,32 @@ class Post(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
-    # renames the instances of the model with their title name
     def __str__(self):
+        """
+        Renames the instances of the model with their title name
+        """
         return self.title
 
     def number_of_likes(self):
         return self.likes.count()
 
     def get_absolute_url(self):
+        """
+        When the get_absolute_url method is called upon 
+        it returns a reverse link to the URL at 'blog' (PostList).
+        """
         return reverse('blog')
 
     def save(self, *args, **kwargs):
+        """
+        Recreates the slug every time the save method is used 
+        or if any change are made to the model.
+        """
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
 
-# comments post model
+# Comments post model
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name="comments")

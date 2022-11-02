@@ -5,13 +5,18 @@ from django_summernote.widgets import SummernoteWidget
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Enables users to add comments to blog posts.
+    """
     class Meta:
         model = Comment
         fields = ('body',)
 
 
 class PostForm(forms.ModelForm):
-
+    """
+    Enables users to add blog posts
+    """
     class Meta:
         model = Post
         fields = (
@@ -57,6 +62,9 @@ class PostForm(forms.ModelForm):
 
 
 class EditPost(forms.ModelForm):
+    """
+    Enables users to add blog posts
+    """
     class Meta:
         model = Post
         fields = (
