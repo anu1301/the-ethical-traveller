@@ -1,4 +1,4 @@
-# Imports
+""" Imports """
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
@@ -31,8 +31,8 @@ class HomePage(TemplateView):
 
 class PostList(generic.ListView):
     """
-    Displays blog posts 6 to a page. 
-    'If paginated statement' in blog template, 
+    Displays blog posts 6 to a page.
+    'If paginated statement' in blog template,
     which provides forward and back links.
     """
     model = Post
@@ -45,6 +45,7 @@ class PostDetail(View):
     """
     Displays detailed page view of individual blog post.
     """
+
     def get(self, request, slug, *args, **kwargs):
         """
         Retrieves and displays blog post details.
@@ -151,7 +152,7 @@ class UpdatePost(SuccessMessageMixin, UpdateView):
 
 class DeletePost(DeleteView):
     """
-    Displays Delete Post page. 
+    Displays Delete Post page.
     Returns to the blog page listing view after deletion.
     """
     model = Post

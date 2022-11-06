@@ -1,10 +1,9 @@
-from django.contrib import admin
-from .models import Post, Comment
-from django_summernote.admin import SummernoteModelAdmin
-
-""" 
-Admin config - Models registered here 
 """
+Admin config - Models registered here
+"""
+from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Post, Comment
 
 
 @admin.register(Post)
