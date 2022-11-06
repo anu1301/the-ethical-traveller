@@ -24,7 +24,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="image for blog post">
                                 <div class="image-flash">
                                     <!-- Author is the registered logged-in user -->
                                     <p class="author">Author: {{ post.author }}</p>
@@ -34,7 +34,7 @@
                                 <h3 class="card-title">{{ post.title }}</h3>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
-                            <hr />
+                            <hr>
                             <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
                                 {{ post.number_of_likes }}</p>
                         </div>
