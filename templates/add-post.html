@@ -22,6 +22,7 @@
                     <!-- Secret, user-specific token to prevent Cross-Site Request Forgeries -->
                     {% csrf_token %}
                     {{ form | crispy }}
+                    <br>
                     <button class="btn btn-signup right" type="submit">{% trans "Submit Your Post" %} &raquo;</button>
                 </form>
             </div>
