@@ -126,13 +126,13 @@
                     </div>
                     {% else %}
                     {% if user.is_authenticated %}
-
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
                     <form method="post" style="margin-top: 1.3em;">
                         {{ comment_form | crispy }}
                         <!-- Secret, user-specific token to prevent Cross-Site Request Forgeries -->
                         {% csrf_token %}
+                        <br>
                         <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                     </form>
                     {% endif %}
@@ -145,6 +145,7 @@
     <!-- JavaScript to make alerts dismiss themselves -->
     <script>
         setTimeout(function () {
+            "use strict";
             let comments = document.getElementById("cmt");
             let alert = new bootstrap.Alert(comments);
             alert.close();

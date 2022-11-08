@@ -114,6 +114,7 @@
     <!-- JavaScript to make alerts dismiss themselves -->
     <script>
         setTimeout(function () {
+            "use strict";
             let messages = document.getElementById("msg");
             let alert = new bootstrap.Alert(messages);
             alert.close();

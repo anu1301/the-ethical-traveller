@@ -1,6 +1,6 @@
 # The Ethical Traveller Blog Site
 
-![am I responsive](/static/images/am_I_responsive.PNG)
+![am I responsive](/static/images/am_i_responsive.PNG)
 
 # Introduction
 The Ethical Traveller provides a forum for users to write blogs about ethical travel as well as
@@ -45,6 +45,7 @@ The site will further be developed, phase three, where it will provide a platfor
 ### Project Objectives
 The main objective of the current project is to make use of CRUD functionality (Create, Read, Update and Delete), where the user is able create, read, update and delete posts.
 <br>
+
 ### Scope
 #### Scope Features - for current project
 -   Create an accessible website
@@ -105,14 +106,19 @@ Wireframes, using Balsamiq, for desktop and mobile devices have been used as par
 
 Some of the wireframes shown below:
 
-Landing Page Desktop:
-![home_page_desktop](/static/images/landing-page.png)
+#### Landing Page Desktop:
 
-Landing Page Mobile:
-![home_page_mobile](/static/images/smaller-device-landing-page.png)
+<img src="./static/images/landing-page.png" width="50%" height="50%">
+<br/>
+<br/>
 
-Blog Page Desktop:
-![blog_page_desktop](/static/images/blog-ashboard.png)
+#### Landing Page Mobile:
+
+<img src="./static/images/smaller-device-landing-page.png" width="50%" height="50%">
+
+#### Blog Page Desktop:
+
+<img src="./static/images/blog-dashboard.png" width="50%" height="50%">
 
 Blog Page Mobile:
 ![blog_page_mobile](/static/images/smaller-device-blog-dashboard.png)
@@ -145,10 +151,12 @@ Sitting in the middle of the spectrum, green is the color of balance, which repr
 ### Logo
 The logo was created using Wix Logo Maker. The above colour palette was used for the colours of the logo.
 <br><br>
-Logo
+
+#### Logo
 
 ![ethical_traveller_logo](/static/images/eithical_traveller_logo.jpg)
 <br><br>
+
 ### Fonts
 
 The font, Roboto and Lato, have been used which has provided simplicity to the website and legibility, especially to large blocks of text.
