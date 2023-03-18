@@ -46,6 +46,10 @@
                     <li class="nav-item">
                         <a class="nav-link {{ blog_active }}" href="{% url 'blog' %}">Blog</a>
                     </li>
+                    <li class="nav-item">
+                        
+                        <a class="nav-link {{ holiday_active }}" href="{% url 'product_list' %}">Volunteering Holiday</a>
+                    </li>
                     <!-- The 'Add blog' and 'Logout' only appear if the user has logged-in -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">

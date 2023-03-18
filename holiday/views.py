@@ -1,4 +1,4 @@
-from django.shortcuts import render, request
+from django.shortcuts import render
 from django.views import generic, View
 from .models import Product
 
@@ -10,4 +10,8 @@ class ProductList(generic.ListView):
     template = 'holiday.html'
     paginate_by = 3
 
-    return render(request, template)
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            "holiday.html",
+            {"holiday_active": "user-redirect"})
