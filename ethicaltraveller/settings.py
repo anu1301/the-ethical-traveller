@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'blog',
+    'holiday',
 ]
 
 # The default site for the project
