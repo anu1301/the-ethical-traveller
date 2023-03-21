@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="w-100 mx-auto mt-2 text-center">
+                <h4>
+                    The Ethical Traveller provides volunteering holidays for people interested in
+                    charitable and conservation projects.
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Holiday Column -->
+<div class="col-12 mt-3 left">
+    <div class="row">
+        <!-- Iterates through holidays -->
+        {% for item in product_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        <img class="card-img-top" src=" {{ item.image.url }}" alt="image for holiday">
+                    </div>
+                    <a href="#" class="holiday-link">
+                        <h3 class="card-title">{{ item.name }}</h3>
+                        <p class="card-text">{{ item.description }}</p>
+                    </a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <!-- Provides 3 holiday in a row (max 3 to a page) -->
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+<!-- When max holidays reached on page pagination provides forward and back links -->
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+</div>
+
+{% endblock %}
