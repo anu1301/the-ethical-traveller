@@ -1,6 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
-
 
 {% block content %}
 
@@ -25,11 +23,12 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="image-container">
-                        <img class="card-img-top" src=" {{ item.image.url }}" alt="image for holiday">
+                        <img class="card-img-top" src="{{ item.image.url }}" alt="image for holiday">
                     </div>
-                    <a href="#" class="holiday-link">
-                        <h3 class="card-title">{{ item.name }}</h3>
+                    <a href="{% url 'product_detail' item.id %}" class="holiday-link text-decoration-none text-muted">
+                        <h4 class="card-title"><strong>{{ item.name }}</strong></h4>
                         <p class="card-text">{{ item.description }}</p>
+                        <p class="card-footer">Price: £{{ item.price }}</p>
                     </a>
                     <hr>
                 </div>

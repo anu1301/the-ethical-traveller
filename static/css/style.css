@@ -140,3 +140,25 @@ body {
     background: transparent;
     border: none;
 }
+
+.btn-book {
+    background-color: #186641;
+    color: #fff;
+}
+
+.btn-back {
+    border:#186641 solid 1px;
+    background-color: #fff;
+}
+
+.btn-back:hover,
+.btn-back:active {
+    background-color: #186641;
+    color: #fff;
+}
+
+.btn-book:hover,
+.btn-book:active {
+    background-color: #fff;
+    color: #6aa76a;
+}

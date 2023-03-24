@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!-- allows translation tags -->
+{% load i18n %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row h-40 my-5">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+            <div class="image-containere my-2">
+                {% if product.image %}
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img class="card-img-top img-fluid rounded-0" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
+                </a>
+                {% else %}
+                <a href="{{ product.image }}" target="_blank">
+                    <img class="card-img-top img-fluid" src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg" alt="{{ item.name }}">
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="product-details-container text-muted mb-5 mt-md-2">
+                <h4 class="mb-3 font-weight-bold">{{ product.name }}</h4>
+                <h5 class="text-left">Price: £{{ product.price }}</h5>
+                <p class="mt-3"><strong>{{ product.description }}</strong></p>
+                <p class="mt-3">{{ product.content }}</p>
+            </div>
+            <div class="col-12">
+                <a class="btn btn-back right" href="{% url 'product_list' %}" role="button">&laquo; {% trans "Back" %}
+                </a>
+                <button class="btn btn-book right" type="submit">{% trans "Book" %} &raquo;</button>
+            </div>
+
+
+{% endblock %}
