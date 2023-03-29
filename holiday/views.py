@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Product
+from .models import Product, Booking
 
 
 class ProductList(generic.ListView):
@@ -18,7 +18,6 @@ class ProductDetail(View):
         """
         Retrieves and displays holiday details.
         """
-        # queryset = Product.objects.all()
         product = get_object_or_404(Product, pk=id)
 
         return render(
@@ -27,3 +26,22 @@ class ProductDetail(View):
             {"product": product}
         )
 
+
+class HolidayBooking(View):
+    """
+    Displays holiday booking page.
+    """
+    template_name = "holiday/holiday_booking.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            "holiday/holiday_booking.html",
+        )
+
+    def holiday_booking(self, request):
+        booking_date = request.POST.get("booking_date")
+        holiday_duration = request.POST.get("holiday_duration")
+        holiday_choice = request.POST.get("holiday_choice")
+
+        holiday_booking.save()
