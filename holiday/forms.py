@@ -1,6 +1,11 @@
 from django import forms
-from bootstrap_datepicker_plus import DatePickerInput
+from django.forms import ModelForm
 from .models import Booking
+from django.contrib.admin.widgets import AdminDateWidget
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class BookingForm(forms.ModelForm):
@@ -33,5 +38,6 @@ class BookingForm(forms.ModelForm):
                     }
                 ),
 
-            'booking_date': DatePickerInput
+            'booking_date': DateInput()
+
             }
