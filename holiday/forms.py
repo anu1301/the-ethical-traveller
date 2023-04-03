@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Booking
-from django.contrib.admin.widgets import AdminDateWidget
 
 
 class DateInput(forms.DateInput):
@@ -23,11 +22,18 @@ class BookingForm(forms.ModelForm):
             'duration'
             )
 
+        labels = {
+            'product_choice': 'Select holiday',
+            'booking_date': 'Select booking date',
+            'duration': 'Select duration of holiday'
+        }
+
         widgets = {
             'product_choice': forms.Select(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Select holiday/project'
+
                     }
                 ),
 

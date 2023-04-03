@@ -14,15 +14,24 @@
 <br>
 <div class="row">
     <div class="col-md-8 mt-1 offset-md-2">
-        <div class="card-body text-bold">
-            <form class="form-group col-lg-8" action="#" method="POST" enctype="multipart/form-data">
+        <div class="card-body">
+            {% if submitted %}
+            <h3>Your booking was submitted successfully</h3>
+            {% else %}
+            <form class="form-group col-lg-8" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-
-                {{ form | crispy }}
-
-                <input type="submit" value="Submit" class="btn btn-primary mt-3">
-
+                <div class="mb-2">
+                    {{ booking_form.product_choice | as_crispy_field }}
+                </div>
+                <div class="mb-2">
+                    {{ booking_form.booking_date | as_crispy_field }}
+                </div>
+                <div class="mb-2">
+                    {{ booking_form.duration | as_crispy_field }}
+                </div>
+                <input type="submit" value="Submit" class="btn btn-book mt-3">
             </form>
+            {% endif %}
         </div>
     </div>
 </div>

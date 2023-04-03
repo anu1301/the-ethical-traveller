@@ -34,21 +34,23 @@ class Booking(models.Model):
         User, on_delete=models.CASCADE, related_name="booking")
     product_choice = models.ForeignKey(
         Product, on_delete=models.CASCADE, max_length=100, related_name='product_list')
-    booking_date = models.DateField(default=datetime.date.today())
+    booking_date = models.DateField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    duration = models.CharField(max_length=10, choices=DURATION, default=7)
+    duration = models.IntegerField(choices=DURATION, default=7)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ['-booking_date']
-        constraints = [
-            models.CheckConstraint(
-                check=models.Q(date__gte=Now()),
-                name='created_at_cannot_be_past_date'
-            )
-        ]
+        # constraints = [
+        #     models.CheckConstraint(
+        #         check=models.Q(date__gte=Now()),
+        #         name='created_at_cannot_be_past_date'
+        #     )
+        # ]
 
     def save(self, *args, **kwargs):
-        if self.date <= datetime.date.today():
+        today = datetime.date.today()
+        if self.booking_date <= today:
             raise ValidationError("Date cannot be in the past!")
-        super(Event, self).save(*args, **kwargs)
+
+        super(Booking, self).save(*args, **kwargs)

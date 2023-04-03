@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Product, Booking
 from .forms import BookingForm
@@ -30,21 +31,68 @@ class ProductDetail(View):
 
 
 class HolidayBooking(View):
+    """ Displays holiday booking page. """
 
     def get(self, request, *args, **kwargs):
-        form = BookingForm()
+        booking_form = BookingForm()
+        template = "holiday/holiday_booking.html"
         return render(
             request,
-            "holiday/holiday_booking.html",
-            {'form': form}
+            template,
+            {'booking_form': booking_form}
         )
 
-    
 
 
-    # """
-    # Displays holiday booking page.
-    # """
+    # def holiday_booking(self, request, *args, **kwargs):
+    #     submitted = False
+    #     booking_form = BookingForm(data=request.POST)
+    #     if booking_form.is_valid():
+    #         booking_form.instance.email = request.user.email
+    #         booking_form.instance.name = request.user.username
+    #         # booking = booking_form.save(commit=False)
+    #         booking_form.save()
+    #     else:
+    #         booking_form = BookingForm()
+
+    #     return render(
+    #         request,
+    #         "holiday/holiday_booking.html",
+    #         {
+    #             "booking_form": booking_form,
+    #             "submitted": True
+
+    #         },
+    #     )
+
+        # template = "holiday/holiday_booking.html"
+        # return render(
+        #     request,
+        #     template,
+        #     {'booking_form': booking_form}
+        # )
+
+    # def holiday_booking(self, request, *args, **kwargs):
+    #     submitted = False
+    #     if request.method == "POST":
+    #         booking_form = BookingForm(request.POST)
+    #         if booking_form.is_valid():
+    #             booking_form.save()
+    #             return HttpResponseRedirect('holiday/holiday.html?submitted=True')
+    #     else:
+    #         booking_form = BookingForm()
+    #         if 'submitted' in request.GET:
+    #             submitted = True
+    #             return render(request, 'holiday/holiday_booking.html', {'booking_form': booking_form,'submitted':submitted})
+                
+
+        # template = "holiday/holiday_booking.html"
+        # return render(
+        #     request,
+        #     template,
+        #     {'form': form}
+        # )
+
     # template_name = "holiday_booking.html"
     # form_class = BookingForm
 
@@ -73,4 +121,5 @@ class HolidayBooking(View):
     #         holiday_choice=data['holiday_choice']
     #     )
 
-    #     holiday_booking.save()
+        # booking_form.save()
+        # return redirect(reverse('holiday/holiday_booking.html'))
