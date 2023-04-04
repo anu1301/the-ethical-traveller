@@ -21,13 +21,13 @@
             <form class="form-group col-lg-8" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-2">
-                    {{ booking_form.product_choice | as_crispy_field }}
+                    {{ form.product_choice | as_crispy_field }}
                 </div>
                 <div class="mb-2">
-                    {{ booking_form.booking_date | as_crispy_field }}
+                    {{ form.booking_date | as_crispy_field }}
                 </div>
                 <div class="mb-2">
-                    {{ booking_form.duration | as_crispy_field }}
+                    {{ form.duration | as_crispy_field }}
                 </div>
                 <input type="submit" value="Submit" class="btn btn-book mt-3">
             </form>
@@ -35,6 +35,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

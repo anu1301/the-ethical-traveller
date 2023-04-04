@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='booking',
             name='booking_date',
-            field=models.DateField(default=''),
+            field=models.DateField(),
         ),
         migrations.AlterField(
             model_name='booking',
