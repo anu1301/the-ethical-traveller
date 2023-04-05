@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Product, Booking
 from .forms import BookingForm
-from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 
 
 class ProductList(generic.ListView):
@@ -42,7 +42,7 @@ class HolidayBooking(View):
             template,
             {
                 "form": form,
-                }
+            }
         )
 
     def post(self, request, *args, **kwargs):
@@ -54,6 +54,7 @@ class HolidayBooking(View):
         if form.is_valid():
             form.instance.user = self.request.user
             form.save()
+            messages.success(request, 'Your booking was submitted successfully and is awaiting confirmation.')
             return redirect('product_list')
         else:
             return render(
@@ -61,6 +62,5 @@ class HolidayBooking(View):
                 "holiday/holiday_booking.html",
                 {
                     "form": form,
-
                 }
             )

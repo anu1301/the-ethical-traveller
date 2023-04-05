@@ -142,13 +142,14 @@
             </div>
         </div>
     </div>
-    <!-- JavaScript to make alerts dismiss themselves -->
-    <script>
-        setTimeout(function () {
-            "use strict";
-            let comments = document.getElementById("cmt");
-            let alert = new bootstrap.Alert(comments);
-            alert.close();
-        }, 3000);
-    </script>
-    {% endblock content %}
+</div>
+<!-- JavaScript to make alerts dismiss themselves -->
+<script>
+    setTimeout(function () {
+        "use strict";
+        let comments = document.getElementById("cmt");
+        let alert = new bootstrap.Alert(comments);
+        alert.close();
+    }, 3000);
+</script>
+{% endblock content %}

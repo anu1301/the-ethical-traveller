@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container-fluid">
     <div class="row">
         <div class="col text-center mt-3">
@@ -15,9 +16,6 @@
 <div class="row">
     <div class="col-md-8 mt-1 offset-md-2">
         <div class="card-body">
-            {% if submitted %}
-            <h3>Your booking was submitted successfully</h3>
-            {% else %}
             <form class="form-group col-lg-8" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-2">
@@ -31,8 +29,18 @@
                 </div>
                 <input type="submit" value="Submit" class="btn btn-book mt-3">
             </form>
-            {% endif %}
         </div>
     </div>
 </div>
+{% else %}
+<div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+        <h3>Welcome to the The Ethical Traveller. To make a booking, you will need to
+            <a class="link" href="{% url 'account_login' %}"><em>log-in</em></a>. If you have not created an account yet, then please
+            <!-- Provides a link to the sign-up/register page -->
+            <a class="link" href="{% url 'account_signup' %}"><em>sign up</em></a>
+            first.</h3>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
