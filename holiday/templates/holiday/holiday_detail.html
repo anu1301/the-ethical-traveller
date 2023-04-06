@@ -16,7 +16,9 @@
                 </a>
                 {% else %}
                 <a href="{{ product.image }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg" alt="{{ item.name }}">
+                    <img class="card-img-top img-fluid"
+                        src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg"
+                        alt="{{ item.name }}">
                 </a>
                 {% endif %}
             </div>
@@ -33,6 +35,14 @@
                 </a>
                 <a class="btn btn-book right" href="{% url 'holiday_booking' %}">{% trans "Book" %} &raquo;</a>
             </div>
-
+                <br>
+                <div>
+                {% if user.is_superuser %}
+                <a class="btn btn-book right right" href="{% url 'update_holiday' product.id %}"
+                    role="button">{% trans "Edit" %} &raquo;</a>
+                <a class="btn btn-signup right" href="{% url 'delete_holiday' product.id %}"
+                    role="button">{% trans "Delete" %} &raquo;</a>
+                {% endif %}
+            </div>
 
 {% endblock %}

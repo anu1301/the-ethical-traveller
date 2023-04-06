@@ -56,7 +56,7 @@ class PostForm(forms.ModelForm):
             widget=forms.Textarea(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Add a Short discription here'
+                    'placeholder': 'Add a short discription here'
                 }
             )
         )
@@ -73,7 +73,7 @@ class PostForm(forms.ModelForm):
 
 class EditPost(forms.ModelForm):
     """
-    Enables users to add blog posts
+    Enables users to edit blog posts
     """
     class Meta:
         """

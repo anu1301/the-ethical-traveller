@@ -55,6 +55,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_post' %}">Add Blog</a>
                     </li>
+                    {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_holiday' %}">Add Holiday</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>

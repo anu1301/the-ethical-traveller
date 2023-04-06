@@ -1,6 +1,7 @@
 from django import forms
+from cloudinary.forms import CloudinaryFileField
 from django.forms import ModelForm
-from .models import Booking
+from .models import Booking, Product
 
 
 class DateInput(forms.DateInput):
@@ -47,3 +48,60 @@ class BookingForm(forms.ModelForm):
             'booking_date': DateInput()
 
             }
+
+
+class HolidayForm(forms.ModelForm):
+    """
+    Enables admin to add holiday/project from frontend.
+    """
+    class Meta:
+        """
+        Uses Product Model and notes fields to be added to the form
+        """
+        model = Product
+        fields = (
+            'name', 'image', 'description', 'price', 'content'
+        )
+
+        name = (
+            forms.CharField(
+                widget=forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Please holiday name'
+                    }
+                )
+            )
+        )
+
+        # image = CloudinaryFileField()
+
+        description = (
+            forms.CharField(
+                max_length=150,
+                widget=forms.Textarea(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Add short discription of holiday/project'
+                    }
+                )
+            )
+        )
+
+        price = forms.DecimalField()
+
+        content = forms.CharField(widget=forms.Textarea())
+
+
+class EditHoliday(forms.ModelForm):
+    """
+    Enables administrator to edit holiday/project
+    """
+    class Meta:
+        """
+        Uses Product Model and notes fields to be added to the form
+        """
+        model = Product
+        fields = (
+                'name', 'image', 'description', 'price', 'content'
+        )

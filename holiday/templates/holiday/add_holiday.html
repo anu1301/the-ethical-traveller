@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!-- allows translation tags -->
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}{% trans "Add Holiday/Project" %}{% endblock %}
+
+{% block content %}
+
+<!-- only allows the administrator/superuser to add holiday/project-->
+{% if user.is_superuser %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <h3>{% trans "Add Holiday/Project" %}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <div class="card-body">
+                <form class="form-group col-lg-8" method="post" enctype="multipart/form-data">
+                    <!-- Secret, user-specific token to prevent Cross-Site Request Forgeries -->
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <!-- The "back" button takes you back to previous page -->
+                    <a class="btn btn-back right mt-3" href="{{ request.META.HTTP_REFERER }}" role="button">&laquo;
+                        {% trans "Back" %} </a>
+                    <button class="btn btn-signup right mt-3" type="submit">{% trans "Submit Holiday Entry" %}
+                        &raquo;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<!-- Message appers to user who is not administrator from adding a holiday/project -->
+{% else %}
+<strong>
+    <h1 class="w-75 mx-auto">Restricted to Site Owner. You will need to login as the Administrator</h1>
+</strong>
+{% endif %}
+{% endblock content %}

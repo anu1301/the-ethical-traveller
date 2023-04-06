@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!-- allows translation tags -->
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Delete Holiday/Project" %}{% endblock %}
+{% block content %}
+<!-- only allows the author of the posts to delete their own posts -->
+{% if user.is_superuser %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h3>{% trans "Delete Holiday/Project" %}</h3>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <div class="input-group mb-3">
+        <form class="form-group col-lg-8" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- Alert message warning requiring confirmation of deletion of post -->
+          <div class="alert alert-danger" role="alert">
+            <h5 class="alert-heading">Are you sure you want to delete this post!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+          </div>
+          <!-- The "go back" button takes you back to previous page -->
+          <a class="btn btn-signup right" href="{{ request.META.HTTP_REFERER }}" role="button">&laquo;
+            {% trans "No go back" %} </a>
+          <button class="btn btn-signup right" type="submit">{% trans "Yes Delete Holiday" %} &raquo;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<!-- Message appers to user who is not administrator from editing a holiday/project -->
+<strong>
+    <h1 class="w-75 mx-auto">Restricted to Site Owner. You will need to login as the Administrator</h1>
+</strong>
+{% endif %}
+{% endblock content %}
