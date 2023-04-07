@@ -18,10 +18,11 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL is in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg"
-                    width="100%">
+                <img class="w-100"
+                    src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg"
+                    alt="placeholder">
                 {% else %}
-                <img src="{{ post.featured_image.url }}" width="100%">
+                <img class="w-100" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                 {% endif %}
             </div>
         </div>
@@ -142,14 +143,14 @@
             </div>
         </div>
     </div>
-</div>
-<!-- JavaScript to make alerts dismiss themselves -->
-<script>
-    setTimeout(function () {
-        "use strict";
-        let comments = document.getElementById("cmt");
-        let alert = new bootstrap.Alert(comments);
-        alert.close();
-    }, 3000);
-</script>
-{% endblock content %}
+
+    <!-- JavaScript to make alerts dismiss themselves -->
+    <script>
+        setTimeout(function () {
+            "use strict";
+            let comments = document.getElementById("cmt");
+            let alert = new bootstrap.Alert(comments);
+            alert.close();
+        }, 3000);
+    </script>
+    {% endblock content %}

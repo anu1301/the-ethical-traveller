@@ -21,7 +21,7 @@ class BookingForm(forms.ModelForm):
             'product_choice',
             'booking_date',
             'duration'
-            )
+        )
 
         labels = {
             'product_choice': 'Select holiday',
@@ -33,21 +33,18 @@ class BookingForm(forms.ModelForm):
             'product_choice': forms.Select(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Select holiday/project'
-
-                    }
-                ),
+                }
+            ),
 
             'duration': forms.Select(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Select duration of holiday/project'
-                    }
-                ),
+                }
+            ),
 
             'booking_date': DateInput()
 
-            }
+        }
 
 
 class HolidayForm(forms.ModelForm):
@@ -68,7 +65,6 @@ class HolidayForm(forms.ModelForm):
                 widget=forms.TextInput(
                     attrs={
                         'class': 'form-control',
-                        'placeholder': 'Please holiday name'
                     }
                 )
             )
@@ -82,7 +78,6 @@ class HolidayForm(forms.ModelForm):
                 widget=forms.Textarea(
                     attrs={
                         'class': 'form-control',
-                        'placeholder': 'Add short discription of holiday'
                     }
                 )
             )
@@ -103,5 +98,5 @@ class EditHoliday(forms.ModelForm):
         """
         model = Product
         fields = (
-                'name', 'image', 'description', 'price', 'content'
+            'name', 'image', 'description', 'price', 'content'
         )
