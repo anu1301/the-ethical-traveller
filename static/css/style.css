@@ -22,6 +22,18 @@ body {
     background-color: #F9FAFC;
 }
 
+/* Navigation links hover effect */
+
+#navbarText a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#navbarText a:hover {
+    border-bottom: 2px solid #3a3a3a;
+
+}
+
 /* Posts */
 .card {
     border: none;
