@@ -6,6 +6,8 @@
 The Ethical Traveller provides a forum for users to write blogs about ethical travel as well as
 conservation projects and volunteering programmes for like minded people.
 
+It also provides volunteering holiday projects that users can book online.
+
 The live website can be found [here](https://the-ethical-traveller.herokuapp.com/).
 
 # Contents
@@ -32,17 +34,15 @@ The site is aimed  at young adventurers who care about the environment, and who 
 [Go to the top](#contents)
 
 ## 1.1. Strategy
-The project is being developed in phases, the first being the blog site. Once the site gains traction; phases two and three will then be developed.
+The project is being developed in phases, the first being the blog site and hosting of volunteering holidays for users to book. It is expected that the users will also use the blog app on this site to post their stories and photos from these holidays.
 
-Phase two of the project will post volunteering holidays for users to book. The landing page will provide useful information on how to choose bone fide volunteering holidays and what to expect on these holidays. It is expected that the users will also use the blog app on this site to post their stories and photos from these holidays.
-
-The site will further be developed, phase three, where it will provide a platform for charities and charitable businesses to post specific projects for volunteers to sign up to. The businesses will be able to manage their own postings on this site.
+The site will further be developed, phase two, where it will provide a platform for charitable organisations to post specific projects for volunteers to sign up to. The organisations will be able to manage their own postings on this site.
 
 [Go to the top](#contents)
 <br>
 ### Project Objectives
 
-The main objective of the current project is to make use of CRUD functionality (Create, Read, Update and Delete), where the user is able create, read, update and delete posts.
+The main objective of the current project is to make use of CRUD functionality (Create, Read, Update and Delete), where the user is able create, read, update and delete posts, and the site owner/administrator is able to add, update and delete holiday projects.
 <br>
 
 ### Scope
@@ -70,9 +70,44 @@ The main objective of the current project is to make use of CRUD functionality (
 
 [Go to the top](#contents)
 ### User Stories
-GitHub issues and project was utilised as an Agile development tool, a kanban board, to track the progress of the site. The site was built in small incremental stages using 'user stories' - the user of the site and the site administrator.
+GitHub issues and project were utilised as an Agile development tool, a kanban board, to track the progress of the site. The site was built in small incremental stages, sprints, using 'user stories' - the user of the site and the site administrator. 
+
+The MoSCoW - must have, should have, could have and won't have - prioritization method was used to categorise tasks and roadmap the development of the site (applicable to the holiday aspect of the site).
+
+A wighted scoring according to ranking of importance to the functionality of the site for the purpose it was being built, has been allocated as in the below table. The score is from 5 - 1, 5 being the highest ranking in accordance with the importance to the business' functionality.
 <br/>
 
+### Scoring/Ranking Table
+Feature| Importance| Accomplished in this Iteration
+------------ | -------------------------|---------
+View post and holiday list | 5 | 5
+Open a post and holiday for details | 5 | 5
+Like/unlike posts | 4 | 4
+Comment on posts | 4 | 4
+User register and login | 5 | 5
+Ability to add, update and delete post | 5 | 5
+Responsive design | 5 | 5
+Defensive coding | 5 | 5
+Booking form | 5 | 5
+Ability to create a holiday booking in the future | 5 | 5
+Ability to select a holiday | 5 | 5
+Ability to create a holiday by admin | 5 | 5
+Ability to update and delete holiday by admin | 5 | 5
+
+Total | 63 | 63
+
+This project was a relatively small project, limited by time, but has potential for further development, incorporating phase two and requested tweaks by the site owner in the next iteration.
+
+### User Stories Board and Sprints
+
+![sprint_1](/static/images/user_stories_sprint_1.PNG)
+<br>
+![sprint_2](/static/images/user_stories_sprint_2.PNG)
+<br>
+![sprint_3](/static/images/user_stories_sprint_3.PNG)
+<br>
+![sprint_4](/static/images/user_stories_sprint_4.PNG)
+<br>
 ![user_story_board](/static/images/user_stories.PNG)
 
 ## 1.2. Structure
