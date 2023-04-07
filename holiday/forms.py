@@ -74,7 +74,7 @@ class HolidayForm(forms.ModelForm):
             )
         )
 
-        # image = CloudinaryFileField()
+        image = CloudinaryFileField()
 
         description = (
             forms.CharField(
@@ -82,7 +82,7 @@ class HolidayForm(forms.ModelForm):
                 widget=forms.Textarea(
                     attrs={
                         'class': 'form-control',
-                        'placeholder': 'Add short discription of holiday/project'
+                        'placeholder': 'Add short discription of holiday'
                     }
                 )
             )

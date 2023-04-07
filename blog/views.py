@@ -1,7 +1,9 @@
 """ Imports """
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    TemplateView, CreateView, UpdateView, DeleteView
+)
 from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm, PostForm, EditPost

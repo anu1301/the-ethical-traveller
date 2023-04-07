@@ -57,7 +57,9 @@ class HolidayBooking(View):
         if form.is_valid():
             form.instance.user = self.request.user
             form.save()
-            messages.success(request, 'Your booking was submitted successfully and is awaiting confirmation.')
+            messages.success(
+                request,
+                'Your booking was submitted successfully.')
             return redirect('product_list')
         else:
             return render(
@@ -97,7 +99,7 @@ class AddHoliday(CreateView):
         if form.is_valid():
             form.instance.user = self.request.user
             form.save()
-            messages.success(request, 'You have successfully added holiday/project')
+            messages.success(request, 'You have successfully added holiday')
             return redirect('product_list')
         else:
             return render(

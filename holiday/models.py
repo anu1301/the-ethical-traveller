@@ -31,7 +31,7 @@ def validate_date(value):
     today = datetime.date.today()
     if value <= today:
         raise ValidationError("Date cannot be today or in the past!")
-        
+
 
 class Booking(models.Model):
     booking_id = models.UUIDField(
@@ -39,8 +39,10 @@ class Booking(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="booking")
     product_choice = models.ForeignKey(
-        Product, on_delete=models.CASCADE, max_length=100, related_name='product_list')
-    booking_date = models.DateField(validators=[validate_date], blank=True, null=True)
+        Product, on_delete=models.CASCADE,
+        max_length=100, related_name='product_list')
+    booking_date = models.DateField(
+        validators=[validate_date], blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField(choices=DURATION, default=7)
     status = models.IntegerField(choices=STATUS, default=0)
