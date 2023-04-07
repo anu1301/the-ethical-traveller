@@ -27,10 +27,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
           </div>
-          <button class="btn btn-signup right" type="submit">{% trans "Yes Delete Post" %} &raquo;</button>
           <!-- The "go back" button takes you back to previous page -->
           <a class="btn btn-signup right" href="{{ request.META.HTTP_REFERER }}" role="button">&laquo;
             {% trans "No go back" %} </a>
+            <button class="btn btn-signup right" type="submit">{% trans "Yes Delete Post" %} &raquo;</button>
         </form>
       </div>
     </div>

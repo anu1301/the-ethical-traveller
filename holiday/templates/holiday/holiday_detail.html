@@ -4,7 +4,6 @@
 {% load i18n %}
 
 {% block content %}
-
 <div class="container-fluid">
     <div class="row h-40 my-5">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
@@ -15,7 +14,7 @@
                         alt="{{ product.name }}">
                 </a>
                 {% else %}
-                <a href="{{ product.image }}" target="_blank">
+                <a href="{{ product.image.url }}" target="_blank">
                     <img class="card-img-top img-fluid"
                         src="https://res.cloudinary.com/anu1301/image/upload/v1664534003/mountain_backdrop_traveller_fgbk0c.jpg"
                         alt="{{ item.name }}">
@@ -35,8 +34,8 @@
                 </a>
                 <a class="btn btn-book right" href="{% url 'holiday_booking' %}">{% trans "Book" %} &raquo;</a>
             </div>
-                <br>
-                <div>
+            <br>
+            <div>
                 {% if user.is_superuser %}
                 <a class="btn btn-book right right" href="{% url 'update_holiday' product.id %}"
                     role="button">{% trans "Edit" %} &raquo;</a>
@@ -44,5 +43,8 @@
                     role="button">{% trans "Delete" %} &raquo;</a>
                 {% endif %}
             </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
