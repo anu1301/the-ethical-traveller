@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views import generic, View
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Product, Booking
