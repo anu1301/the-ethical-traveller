@@ -258,13 +258,27 @@ The back buttons take you back to the previous page.
 ### Add Blog Page
 The user is only able to add a blog once registed and signed-in. The form is fairly simple and intuitive. 
 
-The content text area has 'Summernote' to allow the user to format their blog as they wish.
-
 The images, once uploaded, are stored in Cloudinary.
 
-The slug field, although not visible, is still ctivate in the background to provide a unique value to the post, and is the slugification of the title.
+The slug field, although not visible, is still activate in the background to provide a unique value to the post, and is the slugification of the title.
 
 <img src="./static/images/add_blog.PNG" width="50%" height="50%">
+<br><br>
+
+### Holiday Pages Features
+
+On the holiday booking form has selection fields with dropdown menus for the holiday and duration of the holiday. The date field provides a date picker. This field prevents the user choosing today's date or a date in the past.
+
+<img src="./static/images/booking_cannot_be_made_in_the_past.PNG" width="50%" height="50%">
+
+The CRUD functionality for creating, updating and deleting holidays to the site frontend is restricted to the siteowner/administrator.
+
+<img src="./static/images/superuser_add_holiday.PNG" width="50%" height="50%">
+
+The edit and delete buttons will only appear when the admin (supersuer) is logged in.
+
+<img src="./static/images/superuser_edit_delete.PNG" width="50%" height="50%">
+
 <br/><br/>
 
 # 3. Technologies Used
@@ -348,18 +362,39 @@ It has also been tested on these devices:
 
 The responsiveness was also tested in dev tools different device sizes, without problems. 
 
-The features were tested on the devices as follows:
+The site features were tested as per the following table:
 
-- The logo 'links' back to the home page
-- The social media links to their respective websites
-- When logging in the success message flashes up
-- When trying to edit another user's post, a message notifies the user that they are not permitted to edit the post as I am not the author of the post
-- When trying to delete another user's post a message states that deletion of the post is not permitted as I am not the author of the post
-- When trying to edit my own post, the site allows me to by taking me to the Edit Page
-- When trying to delete my own post the site allows me to by taking me to the delete page, but requires confirmation.
-- The back buttons take me back to the previous page
-- The site allows me to add a post successfully and shows a success message
-- On deletion of a post the post simply disappears
+### Navigation Bar
+
+All Pages:
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Home page | When clicking the "home" link or the logo in the navigation bar, the browser redirects me to the home page. | PASS
+Blog page | When clicking the "blog" link in the navigation bar, the browser redirects me to the blog page. | PASS
+Volunteering Holiday page | When clicking the "volunteering holiday" link in the navigation bar, the browser redirects me to the volunteering holiday page. | PASS
+Add Blog page | When clicking the "add blog" link in the navigation bar, the browser redirects me to the add your post form page. The user will know they are on this page by the heading. | PASS
+Add Holiday page | When clicking the "add holiday" link in the navigation bar (which only appears when the admin is logged in), the browser redirects me to the add holiday/project form page. The administrator will know they are on this page by the heading.| PASS
+Register page | When clicking the "register" link in the navigation bar, the browser redirects me to the register page. The user will know they are on this page by the heading. | PASS
+Login / Logout pages | When clicking the "login/logout" links in the navigation bar, the browser redirects me to the login or logout page. The user will know they are on this page by the heading. | PASS
+Foreground & background colour | Checked for contrast and clarity | PASS
+
+### Footer
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Facebook | When clicking the Facebook icon, a new tab opens and redirects to the Facebook website. | PASS
+Twitter | When clicking the Twitter icon, a new tab opens and redirects to the Twitter website. | PASS
+Instagram | When clicking the Instagram icon, a new tab opens and redirects to the Instagram website. | PASS
+Youtube | When clicking the Youtube icon, a new tab opens and redirects to the Youtube website. | PASS
+
+### Features
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Booking button | When clicking the "book" button in holiday detail, the browser directs me to the booking form. Only allows this once logged in | PASS
+Booking form | When sclicking on the "select holiday" and "select duration of holiday" fields a dropdown menu appears. When clicking on the "select booking date" field a date picker appears - this field will not allow dates to be selected in the past or current day - a validaion error message appears. If the fields aren't selected the form will not submit and message appears to complete the fields. On submission of booking form a success message appears. | PASS
+Add Holiday | Only available to logged in admin frontend. On entering the fields and uploading images, and submitting. Sucess message appears and entry added to products database and holiday listing frontend. | FAIL *
+Update/Delete Holiday | Only available to logged in admin frontend. On updating fields and submitting form, entry is updated successfully and success message appears. When clicking on "delete" button I am directed to delete holiday/project page where a warning appears making sure that the user wants to delete the entry. If yes, the entry simply disappears. The user is given the option of using a back button to take them to the previous page (this is also true of the the blog posts). | PASS
+
+ *The failed test for adding holidays does not render the image on submission. However if the same entry is edited and an image chosen again, then the updated holiday renders successfully. Unfortunately, I have been unable to find the cause of this bug, but believe it may have something to do with a path issue to successfully upload images to storage at Cloudinary.
 
 # 5. Production Cycle
 
@@ -434,12 +469,12 @@ I initially had a problem with deployment, which was resolved by adding a runtim
 
 [Go to the top](#contents)
 
-The images were taken from Adobe Stock on a free trial period
+Some of the free images were taken from Adobe Stock and Pixel. Some have been taken from various holiday sites, but because this site has been built for educational purposes and is not meant to be a money making business, this is permitted under copyright law. I have also added a disclaimer - frontend in the footer section of the website.
 
 For the base of my project I referred to and used some code from the Code Institute walk along project as a template
 
-I obtained assistance from the Slack Community and Code Institute Tutor Support
+I obtained assistance from the Slack Community, Stack overflow and Code Institute Tutor Support
 
-I also used the internet to search for answers to coding problems
+I also used the internet to search for answers to coding problems or parralel logic.
 
 My Mentor, Marcel Mulder for his guidance and support
