@@ -306,16 +306,19 @@ Lighthouse and Siteimprove were used to check the accessibility of the site.
 
 W3C Markup was used to check for errors in the HTML (Templates) pages. The files incorporated Django templates, so it would have been difficult to get any meaningful results if raw code had been tested. I used inspect source on the site, copied the full HTML and ran it through the validator.
 
-#### Home Page
-<img src="./static/images/index_errors.PNG" width="50%" height="50%">
-
 #### Post Detail
-<img src="./static/images/post_detail_errors.PNG" width="50%" height="50%">
+<img src="./static/images/post-detail.html_errors.PNG" width="50%" height="50%">
+
+These errors are being caused by the formatting of the text content within the post, rather than the code.
 
 #### Update Post
 <img src="./static/images/update_post_error_1.PNG" width="50%" height="50%">
 <img src="./static/images/update_post_error_2.PNG" width="50%" height="50%">
 <img src="./static/images/update_post_error_3.PNG" width="50%" height="50%">
+
+These errors are being caused by the formatting of the text content within the post, rather than the code.
+
+
 
 The CSS Code was checked through W£C CSS (jigsaw)
 
@@ -329,7 +332,7 @@ Under normal circumstances, Python would have been validated via PEP8 Online, bu
 
 The various issues that came to light during the validation process were dealt with. A chart below shows the final outcome.
 
-<img src="./static/images/validation_chart.PNG" width="50%" height="50%">
+<img src="./static/images/validation_chart_1.PNG" width="50%" height="50%">
 
 ## Manual Testing
 The site has been tested in the following browsers, without any problems:
