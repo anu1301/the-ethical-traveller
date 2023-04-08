@@ -304,7 +304,7 @@ Lighthouse and Siteimprove were used to check the accessibility of the site.
 #### Lighthouse Mobile
 <img src="./static/images/lighthouse_mobile.PNG" width="50%" height="50%">
 
-W3C Markup was used to check for errors in the HTML (Templates) pages. The files incorporated Django templates, so it would have been difficult to get any meaningful results. I used inspect source on the actual website and copied the full HTML and ran it through the validator.
+W3C Markup was used to check for errors in the HTML (Templates) pages. The files incorporated Django templates, so it would have been difficult to get any meaningful results if raw code had been tested. I used inspect source on the site, copied the full HTML and ran it through the validator.
 
 #### Home Page
 <img src="./static/images/index_errors.PNG" width="50%" height="50%">

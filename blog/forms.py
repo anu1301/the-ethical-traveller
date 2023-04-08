@@ -3,7 +3,6 @@ Form configs
 """
 from django import forms
 from cloudinary.forms import CloudinaryFileField
-from django_summernote.widgets import SummernoteWidget
 from .models import Comment, Post
 
 
@@ -62,13 +61,8 @@ class PostForm(forms.ModelForm):
         )
     )
 
-    content = forms.CharField(
-        widget=SummernoteWidget(
-            attrs={
-                'summernote': {'width': '100%'}
-            }
-        )
-    )
+    content = forms.CharField(widget=forms.Textarea())
+
 
 
 class EditPost(forms.ModelForm):
@@ -84,10 +78,5 @@ class EditPost(forms.ModelForm):
             'title', 'featured_image', 'excerpt', 'content', 'status'
         )
 
-    content = forms.CharField(
-        widget=SummernoteWidget(
-            attrs={
-                'summernote': {'width': '100%'}
-            }
-        )
-    )
+    content = forms.CharField(widget=forms.Textarea())
+
