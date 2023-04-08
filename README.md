@@ -123,7 +123,7 @@ The structure of the website is simple:
 - Register/sign-up, Log-in and Log-out are categories of the home page.
 
 Site map illustraton (Miro Mind Map)
-![site-map](/static/images/ethicaltraveller_sitemap.PNG)
+![site-map](/static/images/ethicaltraveller_sitemap.jpg)
 <br/>
 ### Database structure
 An Entity Relationship Diagram (ERD) has been created to better understand the database structure, which in turn has been converted into usable Django models (likened to tables in a database).
